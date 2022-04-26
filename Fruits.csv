@@ -1,11 +1,11 @@
-Name;Price;Average Size;Average Weight;Color;Country of Origin;Grade;Category;Classification;Harvested;Maturity Group
-Banana;5000000;;;Yellow;;Extra;Dry;;;
-Apple;5;;;Green;;Extra;Dry;;;
-Orange;5;;;Orange;;Extra;Fleshy;;;
-Strawberry;5;;;Red;;Extra;Fleshy;;;
-Blueberry;5;;;Blue;;Extra;Fleshy;;;
-Mango;5;;;Green;;Extra;Dry;;;
-Cherry;5;;;Red;;Extra;Fleshy;;;
-Pineapple;5;;;Yellow;;Extra;Fleshy;;;
-Raspberry;5;;;Red;;Extra;Fleshy;;;
-Grape;5;;;Green;;Extra;Fleshy;;;
+name;price;size;weight;color;countryOfOrigin;grade;category;classification;harvestSeason
+Banana;0.75;;;Yellow;;Extra;Dry;;;
+Apple;1;;;Green;;Extra;Dry;;;
+Orange;1.2;;;Orange;;Extra;Fleshy;;;
+Strawberry;0.15;;;Red;;Extra;Fleshy;;;
+Blueberry;0.05;;;Blue;;Extra;Fleshy;;;
+Mango;2;;;Green;;Extra;Dry;;;
+Cherry;0.4;;;Red;;Extra;Fleshy;;;
+Pineapple;2.35;;;Yellow;;Extra;Fleshy;;;
+Raspberry;0.35;;;Red;;Extra;Fleshy;;;
+Grape;0.3;;;Green;;Extra;Fleshy;;;
