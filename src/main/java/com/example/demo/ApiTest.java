@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentMap;
 
 @RestController
 @RequestMapping("/api")
-public class APItest {
+public class ApiTest {
 
     ConcurrentMap<String, Ding> dings = new ConcurrentHashMap<>();
 
