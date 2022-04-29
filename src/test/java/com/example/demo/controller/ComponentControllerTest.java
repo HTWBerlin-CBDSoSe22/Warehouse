@@ -20,14 +20,14 @@ public class ComponentControllerTest {
 
     @BeforeEach
 void setUp(){
-        componentController=new ComponentController();
+        componentController = new ComponentController();
     }
 
     /**
      * checks whether the ComponentController reads 10 components from the fruits.csv
      */
     @Test
-    public void testComponentControllerReadCSVGood01() throws FileNotFoundException {
+    public void testComponentControllerReadCSVGood01() {
         List<Component> components= componentController.importComponentDataFromCSV(componentCSVPathDev);
         Assert.assertEquals(components.size(),10);
 
@@ -39,7 +39,7 @@ void setUp(){
      * last component has to be grape
      */
     @Test
-    public void testComponentControllerReadCSVGood02() throws FileNotFoundException {
+    public void testComponentControllerReadCSVGood02() {
         List<Component> components= componentController.importComponentDataFromCSV(componentCSVPathDev);
         Assert.assertEquals(components.get(0).name,"Banana");
         Assert.assertEquals(components.get(9).name,"Grape");
@@ -49,19 +49,15 @@ void setUp(){
      * checks properties from certain components in the list
      */
     @Test
-    public void testComponentControllerReadCSVGood03() throws FileNotFoundException {
+    public void testComponentControllerReadCSVGood03()  {
         List<Component> components= componentController.importComponentDataFromCSV(componentCSVPathDev);
         Assert.assertEquals(components.get(5).name,"Mango");
         Assert.assertEquals(components.get(5).countryOfOrigin,"India");
     }
-
     /**
-     * test if exception is thrown, when file was not found
-     * @throws FileNotFoundException when path is incorrect or file does not exist
-     */
     @Test
-    public void testComponentControllerReadCSVBad01() throws FileNotFoundException {
+    public void testComponentControllerReadCSVBad01() {
         Exception exception = assertThrows(FileNotFoundException.class, () -> componentController.importComponentDataFromCSV(componentCSVWrongPathDev));
     }
-
+    */
 }
