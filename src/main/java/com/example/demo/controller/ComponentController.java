@@ -4,13 +4,13 @@ import com.example.demo.exception.CSVNullPointerException;
 import com.example.demo.model.Component;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 public class ComponentController {
@@ -23,8 +23,8 @@ public class ComponentController {
        return listOfAllComponents;
    }
 
-    @GetMapping(path = "/components/componentId")
-    public Component showSingleComponent(@RequestParam int componentId){
+    @RequestMapping(value = "/components/{componentId}", method=GET)
+    public Component showSingleComponent(@PathVariable("componentId") int componentId){
         List<Component> listOfAllComponents;
         listOfAllComponents = importComponentDataFromCSV(csvPathDev);
         Component selectedSingleComponent = listOfAllComponents.get(componentId);
