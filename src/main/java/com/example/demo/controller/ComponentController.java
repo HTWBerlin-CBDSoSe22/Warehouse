@@ -27,9 +27,12 @@ public class ComponentController {
     public Component showSingleComponent(@PathVariable("componentId") int componentId){
         List<Component> listOfAllComponents;
         listOfAllComponents = importComponentDataFromCSV(csvPathDev);
-        Component selectedSingleComponent = listOfAllComponents.get(componentId);
-        if(checkComponentIdValidity(componentId) && selectedSingleComponent != null) {
-            return selectedSingleComponent;
+        Component selectedSingleComponent;
+        if(checkComponentIdValidity(componentId)) {
+            if((selectedSingleComponent=listOfAllComponents.get(componentId))!=null)
+                return selectedSingleComponent;
+            else
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "id empty");
         }else{
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id not valid");
         }
