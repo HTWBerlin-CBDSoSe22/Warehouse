@@ -1,11 +1,11 @@
-Name;Price;Average Size;Average Weight;Color;Country of Origin;Grade;Category;Classification;Harvested;Maturity Group
-Banana;5000000;;;Yellow;;Extra;Dry;;;
-Apple;5;;;Green;;Extra;Dry;;;
-Orange;5;;;Orange;;Extra;Fleshy;;;
-Strawberry;5;;;Red;;Extra;Fleshy;;;
-Blueberry;5;;;Blue;;Extra;Fleshy;;;
-Mango;5;;;Green;;Extra;Dry;;;
-Cherry;5;;;Red;;Extra;Fleshy;;;
-Pineapple;5;;;Yellow;;Extra;Fleshy;;;
-Raspberry;5;;;Red;;Extra;Fleshy;;;
-Grape;5;;;Green;;Extra;Fleshy;;;
+name,price,height,weight,color,countryOfOrigin,grade,category,classification,harvestSeason
+Banana,0.75,13,120,yellow,Ecuador,H. extra,dry,Tropical fruit,winter
+Apple,1,7,200,green,Germany,H. extra,dry,Core,fall
+Orange,1.2,6,250,orange,Spain,H. I,fleshy,Citrus fruit,summer
+Strawberry,0.15,2.5,25,red,Spain,H. I,fleshy,Berry,summer
+Blueberry,0.05,0.8,5,blue,USA,H. II,fleshy,Berry,summer
+Mango,2,12,700,green,India,H. I,fleshy,Tropical fruit,summer
+Cherry,0.4,1.5,20,red,Germany,H. extra,fleshy,Pit,summer
+Pineapple,3,25,1500,yellow,Ghana,H. II,dry,Tropical fruit,spring
+Raspberry,0.35,2,30,red,Poland,H. extra,fleshy,Berry,summer
+Grape,0.3,1,25,green,USA,H. I,fleshy,Berry,summer
