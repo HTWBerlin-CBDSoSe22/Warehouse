@@ -1,13 +1,15 @@
-package java.com.example.demo.controller;
+package com.example.demo.controller;
 
-import com.example.demo.controller.ComponentController;
 import com.example.demo.model.Component;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.FileNotFoundException;
 import java.util.List;
+
+import static org.junit.Assert.assertThrows;
 
 @SpringBootTest
 public class ComponentControllerTest {
@@ -28,8 +30,6 @@ void setUp(){
     public void testComponentControllerReadCSVGood01() {
         List<Component> components= componentController.importComponentDataFromCSV(componentCSVPathDev);
         Assert.assertEquals(components.size(),10);
-
-
     }
 
     /**
@@ -52,6 +52,7 @@ void setUp(){
         Assert.assertEquals(components.get(5).name,"Mango");
         Assert.assertEquals(components.get(5).countryOfOrigin,"India");
     }
+  
     /**
     @Test
     public void testComponentControllerReadCSVBad01() {
