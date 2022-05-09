@@ -2,6 +2,8 @@ package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
@@ -14,3 +16,11 @@ public class DemoApplication {
 
 }
 
+//Testoutput
+@RestController
+class HelloController {
+	@GetMapping("/")
+	String hello(){
+		return "Hi das hier ist nur zum Testen weil mich diese Whitelabel-Message nervt";
+	}
+}
