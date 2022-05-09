@@ -1,8 +1,5 @@
 package com.example.demo.model;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
 public class Component {
     public String name;
     public String price;
@@ -14,7 +11,6 @@ public class Component {
     public String category;
     public String classification;
     public String harvestSeason;
-
 
     @Override
     public String toString() {
@@ -31,8 +27,5 @@ public class Component {
                 ", harvestSeason='" + harvestSeason + '\'' +
                 '}';
     }
-
-
-
 
 }
