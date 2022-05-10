@@ -37,12 +37,11 @@ public class ProductController {
     public Product showSingleProduct(@PathVariable("productId") int productId){
         Product selectedSingleProduct;
         List<Product> listOfAllProducts = readProductsFromCSV(csvPathToProductsDev);
-
-        if((selectedSingleProduct=listOfAllProducts.get(productId))!= null){
-            return selectedSingleProduct;
-        }else{
+        if(0 > productId || productId >= listOfAllProducts.size()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
+        selectedSingleProduct=listOfAllProducts.get(productId);
+        return selectedSingleProduct;
     }
 
     /**

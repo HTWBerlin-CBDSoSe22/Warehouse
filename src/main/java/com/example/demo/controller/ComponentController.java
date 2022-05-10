@@ -32,14 +32,14 @@ public class ComponentController {
         List<Component> listOfAllComponents;
         listOfAllComponents = importComponentDataFromCSV(csvPathDev);
         Component selectedSingleComponent;
-        if(checkComponentIdValidity(componentId)) {
-            if((selectedSingleComponent=listOfAllComponents.get(componentId))!=null)
-                return selectedSingleComponent;
-            else
-                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "id empty");
-        }else{
+        if(!checkComponentIdValidity(componentId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id not valid");
         }
+        if((selectedSingleComponent=listOfAllComponents.get(componentId))==null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "id empty");
+        }
+        return selectedSingleComponent;
+
     }
 
     /**
@@ -57,7 +57,6 @@ public class ComponentController {
         } catch (NullPointerException e) {
             throw new CSVNullPointerException("component csv file is empty ");
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
             throw new WarehouseFileNotFoundException("component csv was not found");
         }
         return componentsFromCSV;
