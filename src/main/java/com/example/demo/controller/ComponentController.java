@@ -65,7 +65,7 @@ public class ComponentController {
     private boolean checkComponentIdValidity(int componentId){
        int maxComponentId = 9;
        int minComponentId = 0;
-        return minComponentId <= componentId && componentId <= maxComponentId;
+       return minComponentId <= componentId && componentId <= maxComponentId;
     }
 
 }

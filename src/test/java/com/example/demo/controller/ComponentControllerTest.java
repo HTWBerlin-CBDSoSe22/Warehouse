@@ -30,6 +30,7 @@ void setUp(){
     @Test
     public void testComponentControllerReadCSVGood01() {
         List<Component> components= componentController.importComponentDataFromCSV(componentCSVPathDev);
+
         Assert.assertEquals(components.size(),10);
     }
 
