@@ -70,4 +70,6 @@ public class ComponentController {
         return minComponentId <= componentId && componentId <= maxComponentId;
     }
 
+
+
 }
