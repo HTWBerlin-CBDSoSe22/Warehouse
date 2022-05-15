@@ -1,24 +1,46 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
+@Table(name = "component")
+
 public class Component {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "component_id")
     private UUID id;
 
+    @Column(name = "component_name")
     public String name;
+
+    @Column(name = "component_price")
     public String price;
+
+    @Column(name = "component_height")
     public String height;
+
+    @Column(name = "component_weight")
     public String weight;
+
+    @Column(name = "component_color")
     public String color;
+
+    @Column(name = "component_countryOfOrigin")
     public String countryOfOrigin;
+
+    @Column(name = "component_grade")
     public String grade;
+
+    @Column(name = "component_category")
     public String category;
+
+    @Column(name = "component_classification")
     public String classification;
+
+    @Column(name = "component_harvestSeason")
     public String harvestSeason;
 
     public Component(UUID id, String name, String price, String height, String weight, String color, String countryOfOrigin, String grade, String category, String classification, String harvestSeason) {
