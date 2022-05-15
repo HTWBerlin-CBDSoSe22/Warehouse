@@ -43,8 +43,8 @@ public class Component {
     @Column(name = "component_harvestSeason")
     public String harvestSeason;
 
-    /*
-    public Component(UUID id, String name, String price, String height, String weight, String color, String countryOfOrigin, String grade, String category, String classification, String harvestSeason) {
+
+    public Component(UUID id, String name, double price, double height, double weight, String color, String countryOfOrigin, String grade, String category, String classification, String harvestSeason) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -61,8 +61,6 @@ public class Component {
     public Component() {
 
     }
-
-     */
 
     public void setId(UUID id) {
         this.id = id;
