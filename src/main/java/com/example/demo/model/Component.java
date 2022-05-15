@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.UUID;
@@ -8,7 +7,9 @@ import java.util.UUID;
 @Entity
 public class Component {
 
+    @Id
     private UUID id;
+
     public String name;
     public String price;
     public String height;
@@ -34,11 +35,14 @@ public class Component {
         this.harvestSeason = harvestSeason;
     }
 
+    public Component() {
+
+    }
+
     public void setId(UUID id) {
         this.id = id;
     }
 
-    @Id
     public UUID getId() {
         return id;
     }
