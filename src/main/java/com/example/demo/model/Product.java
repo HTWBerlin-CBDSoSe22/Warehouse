@@ -12,7 +12,7 @@ public class Product {
     private UUID id;
     public String name;
 
-
+/*
     public Product(UUID id, String name) {
         this.id = id;
         this.name = name;
@@ -21,6 +21,8 @@ public class Product {
     public Product() {
 
     }
+
+ */
 
     public UUID getId() {
         return id;

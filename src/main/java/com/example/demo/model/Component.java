@@ -17,13 +17,13 @@ public class Component {
     public String name;
 
     @Column(name = "component_price")
-    public String price;
+    public double price;
 
     @Column(name = "component_height")
-    public String height;
+    public double height;
 
     @Column(name = "component_weight")
-    public String weight;
+    public double weight;
 
     @Column(name = "component_color")
     public String color;
@@ -43,6 +43,7 @@ public class Component {
     @Column(name = "component_harvestSeason")
     public String harvestSeason;
 
+    /*
     public Component(UUID id, String name, String price, String height, String weight, String color, String countryOfOrigin, String grade, String category, String classification, String harvestSeason) {
         this.id = id;
         this.name = name;
@@ -61,6 +62,8 @@ public class Component {
 
     }
 
+     */
+
     public void setId(UUID id) {
         this.id = id;
     }
@@ -77,27 +80,27 @@ public class Component {
         this.name = name;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public void setHeight(String height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
-    public String getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
