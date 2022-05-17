@@ -1,18 +1,24 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-//@Table(name = "component")
+@Table(name = "component")
 
 public class Component {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long componentId;
+    @ManyToMany
+    @JoinTable(
+            name = "compontents_products",
+            joinColumns = @JoinColumn(name = "componentId"),
+            inverseJoinColumns = @JoinColumn(name = "productId"))
+    Set<Product> isInProducts;
+
+
     private String name;
     private double price;
     private double height;
@@ -37,7 +43,8 @@ public class Component {
         this.harvestSeason = harvestSeason;
     }
 
-    public Component() {}
+    public Component() {
+    }
 
     @Override
     public String toString() {
