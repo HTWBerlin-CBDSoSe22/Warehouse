@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
+
 public class Component {
+
     public String name;
     public String price;
     public String height;

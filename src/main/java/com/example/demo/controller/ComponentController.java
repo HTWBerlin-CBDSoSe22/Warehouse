@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.exception.CSVNullPointerException;
+import com.example.demo.exception.WarehouseFileNotFoundException;
 import com.example.demo.model.Component;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.http.HttpStatus;
@@ -8,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -33,24 +32,23 @@ public class ComponentController {
         List<Component> listOfAllComponents;
         listOfAllComponents = importComponentDataFromCSV(csvPathDev);
         Component selectedSingleComponent;
-        if(checkComponentIdValidity(componentId)) {
-            if((selectedSingleComponent=listOfAllComponents.get(componentId))!=null)
-                return selectedSingleComponent;
-            else
-                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "id empty");
-        }else{
+        if(!checkComponentIdValidity(componentId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id not valid");
         }
+        if((selectedSingleComponent=listOfAllComponents.get(componentId))==null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "id empty");
+        }
+        return selectedSingleComponent;
+
     }
 
     /**
      * converts each csv row to a component object and adds them to a list
-     * @param pathToCSV
      * @return list of all components from csv file
      * @throws CSVNullPointerException csv file is empty
      */
-    public List<Component> importComponentDataFromCSV(String pathToCSV) throws CSVNullPointerException {
-        List<Component> componentsFromCSV = null;
+    public List<Component> importComponentDataFromCSV(String pathToCSV) throws CSVNullPointerException, WarehouseFileNotFoundException {
+        List<Component> componentsFromCSV;
         try {
             componentsFromCSV = new CsvToBeanBuilder(new FileReader(pathToCSV))
                         .withType(Component.class)
@@ -59,7 +57,7 @@ public class ComponentController {
         } catch (NullPointerException e) {
             throw new CSVNullPointerException("component csv file is empty ");
         } catch (FileNotFoundException e) {
-            // todo: throw and define warehouseFileNotFoundException and exception for reading access denied
+            throw new WarehouseFileNotFoundException("component csv was not found");
         }
         return componentsFromCSV;
     }
@@ -67,7 +65,7 @@ public class ComponentController {
     private boolean checkComponentIdValidity(int componentId){
        int maxComponentId = 9;
        int minComponentId = 0;
-        return minComponentId <= componentId && componentId <= maxComponentId;
+       return minComponentId <= componentId && componentId <= maxComponentId;
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.exception.WarehouseFileNotFoundException;
 import com.example.demo.model.Component;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,6 +30,7 @@ void setUp(){
     @Test
     public void testComponentControllerReadCSVGood01() {
         List<Component> components= componentController.importComponentDataFromCSV(componentCSVPathDev);
+
         Assert.assertEquals(components.size(),10);
     }
 
@@ -52,11 +54,11 @@ void setUp(){
         Assert.assertEquals(components.get(5).name,"Mango");
         Assert.assertEquals(components.get(5).countryOfOrigin,"India");
     }
-  
-    /**
+
+
     @Test
     public void testComponentControllerReadCSVBad01() {
-        Exception exception = assertThrows(FileNotFoundException.class, () -> componentController.importComponentDataFromCSV(componentCSVWrongPathDev));
+        Exception exception = assertThrows(WarehouseFileNotFoundException.class, () -> componentController.importComponentDataFromCSV(componentCSVWrongPathDev));
     }
-    */
+
 }
