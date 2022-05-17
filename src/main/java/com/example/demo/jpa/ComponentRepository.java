@@ -1,14 +1,13 @@
 package com.example.demo.jpa;
 
 import java.util.List;
-import java.util.UUID;
 
 import com.example.demo.model.Component;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ComponentRepository extends CrudRepository<Component, UUID> {
+public interface ComponentRepository extends CrudRepository<Component, Long> {
 
-    Component findById(long id);
+    Component findByComponentId(long componentId);
     List<Component> findByPrice(double price);
     List<Component> findByHeight(double height);
     List<Component> findByWeight(double weight);
@@ -16,7 +15,4 @@ public interface ComponentRepository extends CrudRepository<Component, UUID> {
     List<Component> findByCountryOfOrigin(String country);
     List<Component> findByClassification(String classification);
     List<Component> findByHarvestSeason(String harvestSeason);
-
-
-
 }

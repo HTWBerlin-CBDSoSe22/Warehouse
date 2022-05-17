@@ -1,17 +1,18 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
-import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "component")
+//@Table(name = "component")
 
 public class Component {
 
-
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
+    private Long componentId;
     private String name;
     private double price;
     private double height;
@@ -41,7 +42,7 @@ public class Component {
     @Override
     public String toString() {
         return "Component{" +
-                "id=" + id +
+                "id=" + componentId +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", height=" + height +
@@ -55,8 +56,8 @@ public class Component {
                 '}';
     }
 
-    public Long getId() {
-        return id;
+    public Long getComponentId() {
+        return componentId;
     }
 
     public String getName() {

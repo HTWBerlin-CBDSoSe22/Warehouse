@@ -1,29 +1,34 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.UUID;
 
 @Entity
 public class Product {
 
     @Id
-    private UUID id;
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long productId;
     public String name;
 
-    public Product(UUID id, String name) {
-        this.id = id;
+    public Product(String name) {
         this.name = name;
     }
 
     public Product() { }
 
-    public UUID getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                '}';
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public Long getProductId() {
+        return productId;
     }
 
     public String getName() {
