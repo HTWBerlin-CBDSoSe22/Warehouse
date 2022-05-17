@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
@@ -21,30 +22,31 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class ComponentController {
     private final String csvPathDev = "fruits.csv";
 
-   @GetMapping(path = "/components")
+    @GetMapping(path = "/components")
     public List<Component> showAllComponents() {
-       List<Component> listOfAllComponents;
-       listOfAllComponents = importComponentDataFromCSV(csvPathDev);
-       return listOfAllComponents;
-   }
+        List<Component> listOfAllComponents;
+        listOfAllComponents = importComponentDataFromCSV(csvPathDev);
+        return listOfAllComponents;
+    }
 
-    @RequestMapping(value = "/components/{componentId}", method=GET)
-    public Component showSingleComponent(@PathVariable("componentId") int componentId){
+    @RequestMapping(value = "/components/{componentId}", method = GET)
+    public Component showSingleComponent(@PathVariable("componentId") int componentId) {
         List<Component> listOfAllComponents;
         listOfAllComponents = importComponentDataFromCSV(csvPathDev);
         Component selectedSingleComponent;
-        if(checkComponentIdValidity(componentId)) {
-            if((selectedSingleComponent=listOfAllComponents.get(componentId))!=null)
+        if (checkComponentIdValidity(componentId)) {
+            if ((selectedSingleComponent = listOfAllComponents.get(componentId)) != null)
                 return selectedSingleComponent;
             else
                 throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "id empty");
-        }else{
+        } else {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id not valid");
         }
     }
 
     /**
      * converts each csv row to a component object and adds them to a list
+     *
      * @param pathToCSV
      * @return list of all components from csv file
      * @throws CSVNullPointerException csv file is empty
@@ -53,9 +55,9 @@ public class ComponentController {
         List<Component> componentsFromCSV = null;
         try {
             componentsFromCSV = new CsvToBeanBuilder(new FileReader(pathToCSV))
-                        .withType(Component.class)
-                        .build()
-                        .parse();
+                    .withType(Component.class)
+                    .build()
+                    .parse();
         } catch (NullPointerException e) {
             throw new CSVNullPointerException("component csv file is empty ");
         } catch (FileNotFoundException e) {
@@ -64,12 +66,10 @@ public class ComponentController {
         return componentsFromCSV;
     }
 
-    private boolean checkComponentIdValidity(int componentId){
-       int maxComponentId = 9;
-       int minComponentId = 0;
+    private boolean checkComponentIdValidity(int componentId) {
+        int maxComponentId = 9;
+        int minComponentId = 0;
         return minComponentId <= componentId && componentId <= maxComponentId;
     }
-
-
 
 }

@@ -8,44 +8,22 @@ import java.util.UUID;
 
 public class Component {
 
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "component_id")
-    private UUID id;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long id;
+    private String name;
+    private double price;
+    private double height;
+    private double weight;
+    private String color;
+    private String countryOfOrigin;
+    private String grade;
+    private String category;
+    private String classification;
+    private String harvestSeason;
 
-    @Column(name = "component_name")
-    public String name;
-
-    @Column(name = "component_price")
-    public double price;
-
-    @Column(name = "component_height")
-    public double height;
-
-    @Column(name = "component_weight")
-    public double weight;
-
-    @Column(name = "component_color")
-    public String color;
-
-    @Column(name = "component_countryOfOrigin")
-    public String countryOfOrigin;
-
-    @Column(name = "component_grade")
-    public String grade;
-
-    @Column(name = "component_category")
-    public String category;
-
-    @Column(name = "component_classification")
-    public String classification;
-
-    @Column(name = "component_harvestSeason")
-    public String harvestSeason;
-
-
-    public Component(UUID id, String name, double price, double height, double weight, String color, String countryOfOrigin, String grade, String category, String classification, String harvestSeason) {
-        this.id = id;
+    public Component(String name, double price, double height, double weight, String color, String countryOfOrigin, String grade, String category, String classification, String harvestSeason) {
         this.name = name;
         this.price = price;
         this.height = height;
@@ -58,15 +36,26 @@ public class Component {
         this.harvestSeason = harvestSeason;
     }
 
-    public Component() {
+    public Component() {}
 
+    @Override
+    public String toString() {
+        return "Component{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", height=" + height +
+                ", weight=" + weight +
+                ", color='" + color + '\'' +
+                ", countryOfOrigin='" + countryOfOrigin + '\'' +
+                ", grade='" + grade + '\'' +
+                ", category='" + category + '\'' +
+                ", classification='" + classification + '\'' +
+                ", harvestSeason='" + harvestSeason + '\'' +
+                '}';
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 

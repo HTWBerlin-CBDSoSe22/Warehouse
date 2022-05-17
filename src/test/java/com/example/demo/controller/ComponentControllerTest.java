@@ -39,8 +39,8 @@ void setUp(){
     @Test
     public void testComponentControllerReadCSVGood02() {
         List<Component> components= componentController.importComponentDataFromCSV(componentCSVPathDev);
-        Assert.assertEquals(components.get(0).name,"Banana");
-        Assert.assertEquals(components.get(9).name,"Grape");
+        Assert.assertEquals(components.get(0).getName(),"Banana");
+        Assert.assertEquals(components.get(9).getName(),"Grape");
     }
 
     /**
@@ -49,8 +49,8 @@ void setUp(){
     @Test
     public void testComponentControllerReadCSVGood03()  {
         List<Component> components= componentController.importComponentDataFromCSV(componentCSVPathDev);
-        Assert.assertEquals(components.get(5).name,"Mango");
-        Assert.assertEquals(components.get(5).countryOfOrigin,"India");
+        Assert.assertEquals(components.get(5).getName(),"Mango");
+        Assert.assertEquals(components.get(5).getCountryOfOrigin(),"India");
     }
   
     /**

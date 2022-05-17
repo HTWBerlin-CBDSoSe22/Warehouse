@@ -1,6 +1,5 @@
 package com.example.demo.model;
 
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.UUID;
@@ -12,17 +11,12 @@ public class Product {
     private UUID id;
     public String name;
 
-
     public Product(UUID id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Product() {
-
-    }
-
-
+    public Product() { }
 
     public UUID getId() {
         return id;
