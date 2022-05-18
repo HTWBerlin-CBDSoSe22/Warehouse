@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import static org.junit.Assert.assertThrows;
@@ -16,11 +15,11 @@ public class ComponentControllerTest {
 
     private String componentCSVPathDev = "fruits.csv";
     private String componentCSVWrongPathDev = "vegetables.csv";
-    private ComponentController componentController;
+    private ComponentControllerOld componentController;
 
     @BeforeEach
 void setUp(){
-        componentController = new ComponentController();
+        componentController = new ComponentControllerOld();
     }
 
     /**
