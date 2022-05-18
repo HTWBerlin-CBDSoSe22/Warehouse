@@ -27,6 +27,7 @@ public class DemoApplication {
 	public CommandLineRunner demo(ComponentRepository componentRepo) {
 		return (args) -> {
 			// testdaten zum starten
+			/*
 			componentRepo.save(new Component("Banana", 0.75, 13, 120, "yellow", "Ecuador" , "H. extra", "dry", "Tropical fruit", "winter"));
 			componentRepo.save(new Component("Strawberry", 0.15, 2.5, 25, "red", "Spain", "H. I", "fleshy", "Berry", "summer"));
 			componentRepo.save(new Component("Grape", 0.3, 1, 25, "green", "USA", "H. I", "fleshy", "Berry", "summer"));
@@ -38,7 +39,7 @@ public class DemoApplication {
 			}
 			log.info("");
 
-/*
+
 			log.info("Components that are berries:");
 			componentRepo.findByClassification("Berry").forEach(berry -> {
 				log.info(berry.toString());
@@ -54,6 +55,7 @@ public class DemoApplication {
 	public CommandLineRunner demo2(ProductRepository productRepo) {
 		return (args) -> {
 			// testdaten zum starten
+			/*
 			productRepo.save(new Product("Roter Obstsalat"));
 			productRepo.save(new Product("Beerensalat"));
 			productRepo.save(new Product("Random Obstsalat"));
@@ -65,7 +67,7 @@ public class DemoApplication {
 			}
 			log.info("");
 
-/*
+
 			log.info("Products literally called Beerensalat idk:");
 			productRepo.findByName("Beerensalat").forEach(beerensalat -> {
 				log.info(beerensalat.toString());
