@@ -1,6 +1,9 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -9,14 +12,12 @@ import java.util.Set;
 public class Component {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long componentId;
-    @ManyToMany
-    @JoinTable(
-            name = "compontents_products",
-            joinColumns = @JoinColumn(name = "componentId"),
-            inverseJoinColumns = @JoinColumn(name = "productId"))
-    Set<Product> isInProducts;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "consistsOf")
+    private Set<Product> isInProducts = new HashSet<>();
 
 
     private String name;
@@ -61,6 +62,10 @@ public class Component {
                 ", classification='" + classification + '\'' +
                 ", harvestSeason='" + harvestSeason + '\'' +
                 '}';
+    }
+
+    public Set<Product> getIsInProducts() {
+        return isInProducts;
     }
 
     public Long getComponentId() {

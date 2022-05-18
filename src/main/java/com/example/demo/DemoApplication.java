@@ -38,12 +38,14 @@ public class DemoApplication {
 			}
 			log.info("");
 
-
+/*
 			log.info("Components that are berries:");
 			componentRepo.findByClassification("Berry").forEach(berry -> {
 				log.info(berry.toString());
 			});
 
+
+ */
 		};
 	}
 
@@ -63,12 +65,14 @@ public class DemoApplication {
 			}
 			log.info("");
 
-
+/*
 			log.info("Products literally called Beerensalat idk:");
 			productRepo.findByName("Beerensalat").forEach(beerensalat -> {
 				log.info(beerensalat.toString());
 			});
 
+
+ */
 		};
 	}
 

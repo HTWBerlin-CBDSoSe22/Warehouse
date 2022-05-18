@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -8,12 +10,18 @@ import java.util.Set;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
 
-    @ManyToMany(mappedBy = "isInProducts")
-    Set<Component> consistentsOf;
+    @ManyToMany
+    @JoinTable(
+            name="products_components",
+            joinColumns = @JoinColumn(name="product_id"),
+            inverseJoinColumns = @JoinColumn(name="component_id")
+    )
+    private Set<Component> consistsOf = new HashSet<Component>();
 
+    @Column(name = "name")
     public String name;
 
     public Product(String name) {
@@ -30,6 +38,10 @@ public class Product {
                 '}';
     }
 
+    public Set<Component> getConsistsOf() {
+        return consistsOf;
+    }
+
     public Long getProductId() {
         return productId;
     }
@@ -40,5 +52,9 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void addComponent(Component component) {
+        consistsOf.add(component);
     }
 }
