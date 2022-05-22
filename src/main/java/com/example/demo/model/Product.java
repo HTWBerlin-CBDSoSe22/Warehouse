@@ -2,7 +2,6 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -24,8 +23,9 @@ public class Product {
     @Column(name = "name")
     public String name;
 
-    public Product(String name) {
+    public Product(String name, Set<Component> components) {
         this.name = name;
+        this.consistsOf = components;
     }
 
     public Product() { }

@@ -25,11 +25,6 @@ public class ProductController {
         return productRepository.findAll();
     }
 
-    @PostMapping
-    Product createProduct(@RequestBody Product product) {
-        return productRepository.save(product);
-    }
-
     @PutMapping("/{productId}/components/{componentId}")
     Product addComponentToProduct(
             @PathVariable Long productId,
@@ -40,4 +35,11 @@ public class ProductController {
         product.addComponent(component);
         return productRepository.save(product);
     }
+
+    @PostMapping
+    Product createProduct(@RequestBody Product product) {
+        return productRepository.save(product);
+    }
+
+
 }

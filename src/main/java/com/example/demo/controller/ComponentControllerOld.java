@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.exception.CSVNullPointerException;
+import com.example.demo.jpa.ComponentRepository;
 import com.example.demo.model.Component;
 import com.opencsv.bean.CsvToBeanBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 public class ComponentControllerOld {
+
     private final String csvPathDev = "fruits.csv";
 
     @GetMapping(path = "/coponents")
