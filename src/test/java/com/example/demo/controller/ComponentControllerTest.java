@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import static org.junit.Assert.assertThrows;
@@ -17,11 +16,11 @@ public class ComponentControllerTest {
 
     private String componentCSVPathDev = "fruits.csv";
     private String componentCSVWrongPathDev = "vegetables.csv";
-    private ComponentController componentController;
+    private ComponentControllerOld componentController;
 
     @BeforeEach
 void setUp(){
-        componentController = new ComponentController();
+        componentController = new ComponentControllerOld();
     }
 
     /**
@@ -41,8 +40,8 @@ void setUp(){
     @Test
     public void testComponentControllerReadCSVGood02() {
         List<Component> components= componentController.importComponentDataFromCSV(componentCSVPathDev);
-        Assert.assertEquals(components.get(0).name,"Banana");
-        Assert.assertEquals(components.get(9).name,"Grape");
+        Assert.assertEquals(components.get(0).getName(),"Banana");
+        Assert.assertEquals(components.get(9).getName(),"Grape");
     }
 
     /**
@@ -51,8 +50,8 @@ void setUp(){
     @Test
     public void testComponentControllerReadCSVGood03()  {
         List<Component> components= componentController.importComponentDataFromCSV(componentCSVPathDev);
-        Assert.assertEquals(components.get(5).name,"Mango");
-        Assert.assertEquals(components.get(5).countryOfOrigin,"India");
+        Assert.assertEquals(components.get(5).getName(),"Mango");
+        Assert.assertEquals(components.get(5).getCountryOfOrigin(),"India");
     }
 
 
