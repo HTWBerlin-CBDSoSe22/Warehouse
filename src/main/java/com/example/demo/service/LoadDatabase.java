@@ -1,5 +1,8 @@
 package com.example.demo.service;
 
+import com.example.demo.exception.CSVNullPointerException;
+import com.example.demo.exception.WarehouseFileNotFoundException;
+import com.example.demo.exception.WrongCSVHeaderException;
 import com.example.demo.jpa.ComponentRepository;
 import com.example.demo.jpa.ProductRepository;
 import com.example.demo.model.Component;
@@ -8,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.io.IOException;
 
 import static com.example.demo.service.CSVImporterService.importComponentsFromCSV;
 import static com.example.demo.service.CSVImporterService.importProductsFromCSV;
@@ -19,11 +24,14 @@ class LoadDatabase {
 
     @Bean
     CommandLineRunner initDatabase(ComponentRepository componentRepository, ProductRepository productRepository) {
-
-        //String name, double price, double height, double weight, String color, String countryOfOrigin, String grade, String category, String classification, String harvestSeason) {
         return args -> {
-            importComponentsFromCSV(componentRepository, "Fruits.csv");
-            importProductsFromCSV(productRepository, "Products.csv");
+            try {
+                importComponentsFromCSV(componentRepository, "Fruits.csv");
+                importProductsFromCSV(productRepository, "Products.csv");
+            }catch(WarehouseFileNotFoundException | CSVNullPointerException | WrongCSVHeaderException e){
+                System.err.print("error when importing csv data");
+                e.printStackTrace();
+            }
         };
     }
 }
