@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/components")
@@ -19,10 +20,9 @@ public class ComponentController {
         return (List<Component>) componentRepository.findAll();
     }
 
-    @PostMapping
-    Component createComponent(@RequestBody Component component) {
-        return componentRepository.save(component);
+    @GetMapping(path = "/{componentId}")
+    Optional<Component> findComponentById(@PathVariable("componentId") long componentId){
+        return (componentRepository.findById(componentId));
     }
-
 
 }
