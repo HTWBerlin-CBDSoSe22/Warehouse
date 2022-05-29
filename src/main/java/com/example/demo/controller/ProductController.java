@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.jpa.ComponentRepository;
 import com.example.demo.jpa.ProductRepository;
 import com.example.demo.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +14,6 @@ public class ProductController {
 
     @Autowired
     ProductRepository productRepository;
-
-    @Autowired
-    ComponentRepository componentRepository;
 
     @GetMapping
     List<Product> getProducts() {
