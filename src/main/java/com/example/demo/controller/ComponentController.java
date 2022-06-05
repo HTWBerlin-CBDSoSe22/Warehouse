@@ -23,16 +23,12 @@ public class ComponentController {
     }
 
     @GetMapping(path = "/{componentId}")
-    ResponseEntity<Component> findComponentById(@PathVariable("componentId") long componentId) throws Exception {
-        // boolean componentExists = componentRepository.existsById(componentId);
-        // if (componentExists) {
-        Optional<Component> newComponent = componentRepository.findById(componentId);
-        if (newComponent.isEmpty()) { //true = null, kein objekt
-            throw new Exception();
-        } //sorry all over the place aber uebung ist vorbei und muss los
-        return ResponseEntity.badRequest().build(); //hier passender response status
-        //see zb. stackabuse.com how to return http status codes in a spring boot application
+    ResponseEntity<Component> findComponentById(@PathVariable("componentId") long componentId) {
+        Optional<Component> searchedComponent = componentRepository.findById(componentId);
+        if (searchedComponent.isEmpty()) { //true = null, kein objekt
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(searchedComponent.get());
     }
-
 
 }
