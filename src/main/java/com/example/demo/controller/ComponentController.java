@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.jpa.ComponentRepository;
 import com.example.demo.model.Component;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +23,12 @@ public class ComponentController {
     }
 
     @GetMapping(path = "/{componentId}")
-    Optional<Component> findComponentById(@PathVariable("componentId") long componentId){
-        return (componentRepository.findById(componentId));
+    ResponseEntity<Component> findComponentById(@PathVariable("componentId") long componentId) {
+        Optional<Component> searchedComponent = componentRepository.findById(componentId);
+        if (searchedComponent.isEmpty()) { //true = null, kein objekt
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(searchedComponent.get());
     }
 
 }

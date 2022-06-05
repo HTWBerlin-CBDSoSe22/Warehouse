@@ -1,8 +1,8 @@
 package com.example.demo.jpa;
 
 import com.example.demo.model.Component;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ComponentRepository extends CrudRepository<Component, Long> {
+public interface ComponentRepository extends JpaRepository<Component, Long> {
 
 }

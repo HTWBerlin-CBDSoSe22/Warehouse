@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.jpa.ProductRepository;
+import com.example.demo.model.Component;
 import com.example.demo.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,8 +24,12 @@ public class ProductController {
     }
 
     @GetMapping(path = "/{productId}")
-    Optional<Product> findProductById(@PathVariable("productId") long productId){
-        return (productRepository.findById(productId));
+    ResponseEntity<Product> findProductById(@PathVariable("productId") long productId){
+        Optional<Product> searchedProduct = productRepository.findById(productId);
+        if (searchedProduct.isEmpty()) { //true = null, kein objekt
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        return ResponseEntity.ok(searchedProduct.get());
     }
 
 }
