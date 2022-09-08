@@ -2,7 +2,7 @@ version: "3.7"
 services:
   warehouse:
     build: .
-    image: springio/warehouse
+    image: jgrothe/warehouse
     ports:
       - "8081:8081"
     container_name: warehouse
