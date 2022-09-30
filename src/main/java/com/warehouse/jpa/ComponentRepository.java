@@ -1,6 +1,6 @@
-package com.example.demo.jpa;
+package com.warehouse.jpa;
 
-import com.example.demo.model.Component;
+import com.warehouse.model.Component;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ComponentRepository extends JpaRepository<Component, Long> {

@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.warehouse.controller;
 
-import com.example.demo.jpa.ComponentRepository;
-import com.example.demo.model.Component;
+import com.warehouse.jpa.ComponentRepository;
+import com.warehouse.model.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

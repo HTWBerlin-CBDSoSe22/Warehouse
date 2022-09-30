@@ -1,16 +1,15 @@
-package com.example.demo.service;
+package com.warehouse.service;
 
-import com.example.demo.exception.CSVNullPointerException;
-import com.example.demo.exception.WarehouseFileNotFoundException;
-import com.example.demo.exception.WrongCSVHeaderException;
-import com.example.demo.jpa.ComponentRepository;
-import com.example.demo.jpa.ProductRepository;
-import com.example.demo.model.Component;
-import com.example.demo.model.Product;
+import com.warehouse.exception.CSVNullPointerException;
+import com.warehouse.exception.WarehouseFileNotFoundException;
+import com.warehouse.exception.WrongCSVHeaderException;
+import com.warehouse.jpa.ComponentRepository;
+import com.warehouse.jpa.ProductRepository;
+import com.warehouse.model.Component;
+import com.warehouse.model.Product;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.exceptions.CsvException;
-
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -26,6 +25,7 @@ public class CSVImporterService {
 
     /**
      * converts each csv row to a component object and adds them to a list
+     * @throws CSVNullPointerException csv file is empty
      */
     public static void importComponentsFromCSV(ComponentRepository componentRepository, String path) {
         List<Component> componentsFromCSV = null;
@@ -74,7 +74,6 @@ public class CSVImporterService {
 
         rowsOfProductCSV.remove(0);
         for (String[] row : rowsOfProductCSV) {
-            //
             if (row.length == 1)
                 continue;
             String[] componentsInProduct = row[1].split(" ");

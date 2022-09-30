@@ -24,8 +24,8 @@
 <!--        <property name="hibernate.dbcp.maxIdle">100</property>-->
 <!--        <property name="hibernate.dbcp.minIdle">50</property>-->
 <!--        <property name="hibernate.dbcp.maxWaitMillis">-1</property>-->
-<!--        <mapping class="com.example.demo.model.Component" />-->
-<!--        <mapping class="com.example.demo.model.Product" />-->
+<!--        <mapping class="Component" />-->
+<!--        <mapping class="Product" />-->
 <!--    </session-factory>-->
 <!--</hibernate-configuration>-->
 
@@ -55,7 +55,7 @@
         <property name="hibernate.dbcp.maxIdle">100</property>
         <property name="hibernate.dbcp.minIdle">50</property>
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
-        <mapping class="com.example.demo.model.Component" />
-        <mapping class="com.example.demo.model.Product" />
+        <mapping class="com.warehouse.model.Component" />
+        <mapping class="com.warehouse.model.Product" />
     </session-factory>
 </hibernate-configuration>

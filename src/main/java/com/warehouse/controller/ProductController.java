@@ -1,8 +1,7 @@
-package com.example.demo.controller;
+package com.warehouse.controller;
 
-import com.example.demo.jpa.ProductRepository;
-import com.example.demo.model.Component;
-import com.example.demo.model.Product;
+import com.warehouse.jpa.ProductRepository;
+import com.warehouse.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +23,7 @@ public class ProductController {
     }
 
     @GetMapping(path = "/{productId}")
-    ResponseEntity<Product> findProductById(@PathVariable("productId") long productId){
+    ResponseEntity<Product> findProductById(@PathVariable("productId") long productId) {
         Optional<Product> searchedProduct = productRepository.findById(productId);
         if (searchedProduct.isEmpty()) { //true = null, kein objekt
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
