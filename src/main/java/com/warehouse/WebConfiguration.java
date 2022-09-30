@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.warehouse;
 
 import org.h2.server.web.WebServlet;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;

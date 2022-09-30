@@ -1,21 +1,18 @@
-package com.example.demo.service;
+package com.warehouse.service;
 
-import com.example.demo.exception.CSVNullPointerException;
-import com.example.demo.exception.WarehouseFileNotFoundException;
-import com.example.demo.exception.WrongCSVHeaderException;
-import com.example.demo.jpa.ComponentRepository;
-import com.example.demo.jpa.ProductRepository;
-import com.example.demo.model.Component;
+import com.warehouse.exception.CSVNullPointerException;
+import com.warehouse.exception.WarehouseFileNotFoundException;
+import com.warehouse.exception.WrongCSVHeaderException;
+import com.warehouse.jpa.ComponentRepository;
+import com.warehouse.jpa.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.IOException;
-
-import static com.example.demo.service.CSVImporterService.importComponentsFromCSV;
-import static com.example.demo.service.CSVImporterService.importProductsFromCSV;
+import static com.warehouse.service.CSVImporterService.importComponentsFromCSV;
+import static com.warehouse.service.CSVImporterService.importProductsFromCSV;
 
 @Configuration
 class LoadDatabase {
@@ -28,7 +25,7 @@ class LoadDatabase {
             try {
                 importComponentsFromCSV(componentRepository, "Fruits.csv");
                 importProductsFromCSV(productRepository, "Products.csv");
-            }catch(WarehouseFileNotFoundException | CSVNullPointerException | WrongCSVHeaderException e){
+            } catch (WarehouseFileNotFoundException | CSVNullPointerException | WrongCSVHeaderException e) {
                 System.err.print("error when importing csv data");
                 e.printStackTrace();
             }

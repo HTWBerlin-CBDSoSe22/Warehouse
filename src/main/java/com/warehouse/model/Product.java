@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.warehouse.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -12,11 +12,11 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
 
-    @ManyToMany(fetch=FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name="products_components",
-            joinColumns = @JoinColumn(name="product_id"),
-            inverseJoinColumns = @JoinColumn(name="component_id")
+            name = "products_components",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "component_id")
     )
     private Set<Component> consistsOf = new HashSet<Component>();
 
@@ -28,7 +28,8 @@ public class Product {
         this.consistsOf = components;
     }
 
-    public Product() { }
+    public Product() {
+    }
 
     @Override
     public String toString() {
