@@ -5,15 +5,11 @@ import com.example.demo.exception.WarehouseFileNotFoundException;
 import com.example.demo.exception.WrongCSVHeaderException;
 import com.example.demo.jpa.ComponentRepository;
 import com.example.demo.jpa.ProductRepository;
-import com.example.demo.model.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.io.IOException;
-
 import static com.example.demo.service.CSVImporterService.importComponentsFromCSV;
 import static com.example.demo.service.CSVImporterService.importProductsFromCSV;
 

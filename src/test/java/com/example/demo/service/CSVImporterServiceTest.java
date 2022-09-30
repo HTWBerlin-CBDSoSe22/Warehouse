@@ -59,11 +59,6 @@ public class CSVImporterServiceTest {
         Assertions.assertEquals(0,this.componentRepository.count());
     }
 
-
-
-    /**
-     * Product Tests
-     */
     // checks whether the ProductController reads the two default products
     @Test
     public void goodImportProduct() {
